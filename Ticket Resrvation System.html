@@ -1,0 +1,416 @@
+krgf<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KCET Ticket Reservation - Pink Theme</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+    * { box-sizing: border-box; scroll-behavior: smooth; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background: #ffe6f0;
+      color: #8b2a47;
+    }
+    header {
+      text-align: center;
+      padding: 20px;
+      background: #ffb3c6;
+    }
+    nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: linear-gradient(to right, #ffb6c1, #f28ab2);
+  box-shadow: 0 4px 10px rgba(255, 182, 193, 0.4);
+  padding: 15px 20px;
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  border-radius: 0 0 20px 20px;
+}
+
+/* Cute bubble-style buttons with icons */
+nav button {
+  background: #ffffffdd;
+  color: #d63384;
+  border: 2px solid #f8a4c4;
+  border-radius: 50px;
+  padding: 10px 18px 10px 40px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(248, 164, 196, 0.3);
+}
+
+nav button::before {
+  content: var(--icon);
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.1rem;
+}
+
+nav button:hover,
+nav button.active {
+  background: #f78fb4;
+  color: white;
+  border-color: #d63384;
+  box-shadow: 0 6px 14px rgba(214, 51, 132, 0.4);
+}
+
+    section {
+      padding: 20px;
+      display: none;
+    }
+    section.active {
+      display: block;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    input, select, textarea {
+      padding: 10px;
+      border-radius: 10px;
+      border: 2px solid #f6a9c1;
+      font-size: 1rem;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: #bf4a6e;
+      background: #fff0f6;
+      outline: none;
+    }
+    button[type=submit] {
+      background: #bf4a6e;
+      color: white;
+      font-weight: bold;
+      padding: 12px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+    button[type=submit]:hover {
+      background: #8b2a47;
+    }
+    table {
+      width: 100%;
+      max-width: 600px;
+      margin: 30px auto;
+      border-collapse: separate;
+      border-spacing: 0 12px;
+    }
+    th, td {
+      padding: 14px;
+      text-align: left;
+    }
+    thead th {
+      background: #bf4a6e;
+      color: white;
+      border-radius: 10px 10px 0 0;
+    }
+    tbody tr {
+      background: #ffd6e3;
+    }
+    tbody tr:hover {
+      background: #ffb0cb;
+    }
+    #home img {
+      display: block;
+      margin: 0 auto;
+      max-width: 150px;
+    }
+    #home p {
+      text-align: center;
+      font-size: 1.1rem;
+      margin-top: 10px;
+    }
+.slider {
+  margin: 20px auto;
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+  padding: 10px;
+  max-width: 90%;
+  scroll-behavior: smooth;
+}
+.slider img {
+  height: 150px;
+  border-radius: 14px;
+  flex-shrink: 0;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  background: white;
+  padding: 10px;
+}
+.slider::-webkit-scrollbar {
+  height: 8px;
+}
+.slider::-webkit-scrollbar-thumb {
+  background: #f28ab2;
+  border-radius: 4px;
+}
+.slider img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(243, 85, 150, 0.4);
+  transition: 0.4s;
+}
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>KCET Ticket Reservation System 🎫</h1>
+</header>
+<nav>
+  <button class="active" data-section="home" style="--icon:'🏠';">Home</button>
+  <button data-section="movie" style="--icon:'🎬';">Movie</button>
+  <button data-section="event" style="--icon:'🎉';">Event</button>
+  <button data-section="bus" style="--icon:'🚌';">Bus</button>
+  <button data-section="train" style="--icon:'🚆';">Train</button>
+  <button data-section="contact" style="--icon:'📞';">Contact</button>
+</nav>
+<section id="home" class="active" style="text-align: center; background: linear-gradient(to bottom right, #fff0f5, #ffe6f0); padding: 40px 20px; border-radius: 0 0 30px 30px; box-shadow: 0 5px 20px #f7b6cd;">
+  <img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="KCET Logo" style="max-width: 100px; margin-bottom: 15px;">
+
+  <h2 style="color: #d63384; font-size: 2rem; text-shadow: 2px 2px 6px #f7b6cd;">
+    💖 Welcome to <span style="color:#bf4a6e;">KCET Ticket World</span> 🎫
+  </h2>
+
+  <p style="font-size: 1.15rem; max-width: 700px; margin: 10px auto; color: #8b2a47;">
+    Reserve your 🎬 <strong>Movie</strong>, 🎉 <strong>Event</strong>, 🚌 <strong>Bus</strong>, and 🚆 <strong>Train</strong> tickets all in one cute place 💗
+  </p>
+
+  <div style="display:flex; justify-content:center; gap:20px; flex-wrap:wrap; margin-top: 40px;">
+    <div style="background:#fff5fa; padding:22px; border-radius:20px; width:220px; box-shadow:0 8px 18px #f8c6d8; transition:transform 0.3s; cursor:pointer;"
+         onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+      <img src="https://cdn-icons-png.flaticon.com/512/7987/7987725.png" alt="Movie" style="width:65px; margin-bottom:10px;">
+      <p><strong>🎬 Book Movies</strong><br/>Choose your fav & showtime</p>
+    </div>
+
+    <div style="background:#fff5fa; padding:22px; border-radius:20px; width:220px; box-shadow:0 8px 18px #f8c6d8; transition:transform 0.3s; cursor:pointer;"
+         onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+      <img src="https://cdn-icons-png.flaticon.com/512/4208/4208496.png" alt="Event" style="width:65px; margin-bottom:10px;">
+      <p><strong>🎉 Reserve Events</strong><br/>KCET Fest, Hackathon & more</p>
+    </div>
+
+    <div style="background:#fff5fa; padding:22px; border-radius:20px; width:220px; box-shadow:0 8px 18px #f8c6d8; transition:transform 0.3s; cursor:pointer;"
+         onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+      <img src="https://cdn-icons-png.flaticon.com/512/1473/1473867.png" alt="Bus" style="width:65px; margin-bottom:10px;">
+      <p><strong>🚌 Book Bus</strong><br/>Comfortable & safe journeys</p>
+    </div>
+
+    <div style="background:#fff5fa; padding:22px; border-radius:20px; width:220px; box-shadow:0 8px 18px #f8c6d8; transition:transform 0.3s; cursor:pointer;"
+         onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+      <img src="https://cdn-icons-png.flaticon.com/512/2305/2305908.png" alt="Train" style="width:65px; margin-bottom:10px;">
+      <p><strong>🚆 Reserve Trains</strong><br/>Speedy ticketing made simple</p>
+    </div>
+  </div>
+<h3 style="text-align:center; margin-top: 30px;">🌟 Highlights</h3>
+<div class="slider">
+  <img src="/mnt/data/tic.png" alt="KCET Ticket" title="KCET Ticket System">
+  <img src="https://cdn-icons-png.flaticon.com/512/1029/1029183.png" alt="Movie Night" title="KCET Movie Night">
+  <img src="https://cdn-icons-png.flaticon.com/512/4784/4784207.png" alt="Cultural Fest" title="Cultural Fest">
+  <img src="https://cdn-icons-png.flaticon.com/512/1475/1475946.png" alt="Bus Tour" title="Bus Tour">
+  <img src="https://cdn-icons-png.flaticon.com/512/2343/2343869.png" alt="Train Travel" title="Train Travel">
+</div>
+
+  <p style="margin-top: 40px; color: #d63384; font-size: 1rem;">✨ Enjoy booking with a smile! ✨</p>
+</section>
+<section id="movie"></section>
+<section id="event"></section>
+<section id="bus"></section>
+<section id="train"></section>
+
+<section id="contact">
+  <h2 style="text-align:center;">Contact Us</h2>
+  <form>
+    <label>Your Name</label>
+    <input type="text" placeholder="Enter your name" required />
+    <label>Email</label>
+    <input type="text" placeholder="Enter your email" required />
+    <label>Message</label>
+    <textarea rows="4" placeholder="Your message here..." required></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+  <!-- 📍 KCET Google Map -->
+  <div style="margin-top: 40px; text-align: center;">
+    <h3 style="color: #bf4a6e;">📍 KCET Campus Location</h3>
+
+    <iframe
+      src="https://maps.google.com/maps?q=Kamaraj%20College%20of%20Engineering%20and%20Technology&t=&z=15&ie=UTF8&iwloc=&output=embed"
+      width="90%"
+      height="320"
+      style="border:0; border-radius:12px; margin-top:10px; box-shadow: 0 6px 20px rgba(0,0,0,0.1);"
+      allowfullscreen=""
+      loading="lazy">
+    </iframe>
+
+    <p style="margin-top: 10px;">
+      <a href="https://goo.gl/maps/MuxZtu2dKgj6c7MaA" target="_blank"
+         style="color:#8b2a47; font-weight:bold; text-decoration: none;">
+        🧭 Open Full Map
+      </a>
+    </p>
+  </div>
+</section>
+
+
+
+<script>
+  const sections = document.querySelectorAll('section');
+  const navButtons = document.querySelectorAll('nav button');
+  const tickets = { movie: [], event: [], bus: [], train: [] };
+
+  const formTemplates = {
+    movie: `
+      <h2>Book Movie Ticket</h2>
+      <form id="booking-form">
+        <label>Select Movie</label>
+        <select name="movieName" required>
+          <option value="">Choose Movie</option>
+          <option>KGF</option>
+          <option>Jailer</option>
+          <option>RRR</option>
+          <option>Leo</option>
+        </select>
+        <label>Show Time</label>
+        <select name="showTime" required>
+          <option value="">Select time</option>
+          <option>10:00 AM</option><option>1:00 PM</option><option>4:00 PM</option><option>7:00 PM</option>
+        </select>
+        <button type="submit">Book Ticket</button>
+      </form>
+      <div id="table-container"></div>`,
+
+    event: `
+      <h2>Book Event Ticket</h2>
+      <form id="booking-form">
+        <label>Select Event</label>
+        <select name="eventName" required>
+          <option value="">Choose Event</option>
+          <option>KCET Annual Day</option>
+          <option>Tech Fest</option>
+          <option>Graduation</option>
+          <option>Hackathon</option>
+        </select>
+        <label>Event Date</label>
+        <input type="date" name="eventDate" required />
+        <button type="submit">Book Ticket</button>
+      </form>
+      <div id="table-container"></div>`,
+
+    bus: `
+      <h2>Book Bus Ticket</h2>
+      <form id="booking-form">
+        <label>From</label>
+        <select name="source" required>
+          <option value="">Select Source</option>
+          <option>Madurai</option><option>Chennai</option><option>Coimbatore</option>
+        </select>
+        <label>To</label>
+        <select name="destination" required>
+          <option value="">Select Destination</option>
+          <option>Trichy</option><option>Salem</option><option>Madurai</option>
+        </select>
+        <label>Date</label>
+        <input type="date" name="date" required />
+        <button type="submit">Book Ticket</button>
+      </form>
+      <div id="table-container"></div>`,
+
+    train: `
+      <h2>Book Train Ticket</h2>
+      <form id="booking-form">
+        <label>From Station</label>
+        <select name="source" required>
+          <option value="">Select Source</option>
+          <option>Madurai</option><option>Trichy</option><option>Chennai</option>
+        </select>
+        <label>To Station</label>
+        <select name="destination" required>
+          <option value="">Select Destination</option>
+          <option>Salem</option><option>Coimbatore</option><option>Chennai</option>
+        </select>
+        <label>Travel Date</label>
+        <input type="date" name="date" required />
+        <button type="submit">Book Ticket</button>
+      </form>
+      <div id="table-container"></div>`
+  };
+
+  function switchSection(id) {
+    sections.forEach(sec => sec.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+
+    navButtons.forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.section === id);
+    });
+
+    if (['movie', 'event', 'bus', 'train'].includes(id)) {
+      document.getElementById(id).innerHTML = formTemplates[id];
+      updateTable(id); // render previous tickets
+
+      document.getElementById('booking-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const data = new FormData(e.target);
+        let ticket = {};
+
+        if (id === 'movie') ticket = { movie: data.get('movieName'), time: data.get('showTime') };
+        if (id === 'event') ticket = { event: data.get('eventName'), date: data.get('eventDate') };
+        if (id === 'bus' || id === 'train')
+          ticket = { source: data.get('source'), destination: data.get('destination'), date: data.get('date') };
+
+        tickets[id].push(ticket);
+        updateTable(id);
+        alert("Ticket booked!");
+        e.target.reset();
+      });
+    }
+  }
+
+  function updateTable(id) {
+    const tableDiv = document.querySelector(`#${id} #table-container`);
+    const data = tickets[id];
+    if (!tableDiv) return;
+
+    if (data.length === 0) {
+      tableDiv.innerHTML = `<p style="text-align:center;">No ${id} tickets booked yet.</p>`;
+      return;
+    }
+
+    let headers = '', rows = '';
+    if (id === 'movie') {
+      headers = `<th>Movie</th><th>Time</th>`;
+      rows = data.map(t => `<tr><td>${t.movie}</td><td>${t.time}</td></tr>`).join('');
+    } else if (id === 'event') {
+      headers = `<th>Event</th><th>Date</th>`;
+      rows = data.map(t => `<tr><td>${t.event}</td><td>${t.date}</td></tr>`).join('');
+    } else {
+      headers = `<th>From</th><th>To</th><th>Date</th>`;
+      rows = data.map(t => `<tr><td>${t.source}</td><td>${t.destination}</td><td>${t.date}</td></tr>`).join('');
+    }
+
+    tableDiv.innerHTML = `
+      <table>
+        <thead><tr>${headers}</tr></thead>
+        <tbody>${rows}</tbody>
+      </table>`;
+  }
+
+  navButtons.forEach(btn => {
+    btn.addEventListener('click', () => switchSection(btn.dataset.section));
+  });
+
+  switchSection('home');t
+</script>
+</div>
+</body>
+</html>
