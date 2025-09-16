@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>User Registration - Simple & Neat</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+    :root {
+      --primary-color: #3f51b5;
+      --accent-color: #ff6f00;
+      --error-color: #e53935;
+      --bg-color: #fff;
+      --input-bg: #f9f9f9;
+      --text-color: #222;
+      --text-muted: #666;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      background: #f0f0f0;
+      font-family: 'Montserrat', sans-serif;
+      color: var(--text-color);
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      padding: 40px 15px;
+    }
+    .container {
+      background: var(--bg-color);
+      width: 100%;
+      max-width: 400px;
+      padding: 30px 30px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    h1 {
+      font-weight: 700;
+      font-size: 1.8rem;
+      margin-bottom: 25px;
+      color: var(--primary-color);
+      text-align: center;
+      letter-spacing: 1.5px;
+    }
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: var(--primary-color);
+      font-size: 0.9rem;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="tel"],
+    input[type="number"] {
+      width: 100%;
+      background: var(--input-bg);
+      border: 1.5px solid #ccc;
+      border-radius: 5px;
+      padding: 12px 14px;
+      font-size: 1rem;
+      color: var(--text-color);
+      margin-bottom: 14px;
+      transition: border-color 0.25s ease;
+      outline-offset: 2px;
+    }
+    input::placeholder {
+      color: var(--text-muted);
+      font-style: italic;
+    }
+    input:focus {
+      border-color: var(--accent-color);
+      outline: none;
+    }
+    input.invalid {
+      border-color: var(--error-color);
+    }
+    .error-msg {
+      color: var(--error-color);
+      font-weight: 600;
+      font-size: 0.8rem;
+      margin-top: -12px;
+      margin-bottom: 12px;
+      min-height: 18px;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+    .error-msg.visible {
+      opacity: 1;
+    }
+    .password-wrapper {
+      position: relative;
+    }
+    .toggle-pwd {
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: var(--accent-color);
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      padding: 0 6px;
+      user-select: none;
+      outline-offset: 2px;
+      transition: color 0.25s ease;
+    }
+    .toggle-pwd:hover,
+    .toggle-pwd:focus {
+      color: #ff8c00;
+      outline: none;
+    }
+    .submit-btn {
+      width: 100%;
+      background: var(--accent-color);
+      border: none;
+      border-radius: 6px;
+      padding: 14px 0;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--bg-color);
+      cursor: pointer;
+      transition: background 0.3s ease;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .submit-btn:hover {
+      background: #ff8c00;
+    }
+    .success-message {
+      color: #2e7d32;
+      font-weight: 700;
+      text-align: center;
+      margin-top: 20px;
+      font-size: 1.1rem;
+      user-select: none;
+    }
+    /* Password strength bar */
+    .strength-bar {
+      height: 6px;
+      background: #e0e0e0;
+      border-radius: 6px;
+      margin-top: -12px;
+      margin-bottom: 18px;
+      overflow: hidden;
+    }
+    .strength-fill {
+      height: 100%;
+      width: 0;
+      background: var(--error-color);
+      border-radius: 6px;
+      transition: width 0.3s ease, background-color 0.3s ease;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" role="region" aria-label="User Registration Form">
+    <h1>User Registration</h1>
+    <form id="regForm" novalidate>
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" placeholder="John Doe" autocomplete="name" required aria-describedby="nameError" aria-invalid="false" />
+      <div class="error-msg" id="nameError" role="alert"></div>
+
+      <label for="age">Age</label>
+      <input type="number" id="age" name="age" placeholder="18" min="18" max="120" autocomplete="off" required aria-describedby="ageError" aria-invalid="false" />
+      <div class="error-msg" id="ageError" role="alert"></div>
+
+      <label for="password">Password</label>
+      <div class="password-wrapper">
+        <input type="password" id="password" name="password" placeholder="8+ chars, uppercase, number" autocomplete="new-password" required aria-describedby="passwordError" aria-invalid="false" />
+        <button type="button" class="toggle-pwd" aria-label="Toggle password visibility" tabindex="0">Show</button>
+      </div>
+      <div class="strength-bar" aria-hidden="true">
+        <div class="strength-fill"></div>
+      </div>
+      <div class="error-msg" id="passwordError" role="alert"></div>
+
+      <label for="creditCard">Credit Card Number</label>
+      <input type="text" id="creditCard" name="creditCard" placeholder="1234 5678 9012 3456" maxlength="19" autocomplete="cc-number" inputmode="numeric" required aria-describedby="ccError" aria-invalid="false" />
+      <div class="error-msg" id="ccError" role="alert"></div>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email" required aria-describedby="emailError" aria-invalid="false" />
+      <div class="error-msg" id="emailError" role="alert"></div>
+
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" name="phone" placeholder="123-456-7890" maxlength="12" autocomplete="tel" inputmode="numeric" required aria-describedby="phoneError" aria-invalid="false" />
+      <div class="error-msg" id="phoneError" role="alert"></div>
+
+      <button type="submit" class="submit-btn">Register</button>
+    </form>
+    <div class="success-message" id="successMsg" role="status" aria-live="polite"></div>
+  </div>
+
+  <script>
+    const form = document.getElementById('regForm');
+
+    const fields = {
+      name: {
+        elem: form.name,
+        errorElem: document.getElementById('nameError'),
+        validate: val => /^[a-zA-Z\s]{2,}$/.test(val),
+        errorMsg: 'Name must be at least 2 letters, letters and spaces only.'
+      },
+      age: {
+        elem: form.age,
+        errorElem: document.getElementById('ageError'),
+        validate: val => {
+          const n = Number(val);
+          return n >= 18 && n <= 120;
+        },
+        errorMsg: 'Age must be between 18 and 120.'
+      },
+      password: {
+        elem: form.password,
+        errorElem: document.getElementById('passwordError'),
+        validate: val => /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/.test(val),
+        errorMsg: 'Password must be 8+ chars, with uppercase, lowercase & number.'
+      },
+      creditCard: {
+        elem: form.creditCard,
+        errorElem: document.getElementById('ccError'),
+        validate: val => /^\d{16}$/.test(val.replace(/\s/g, '')),
+        errorMsg: 'Credit card must be exactly 16 digits.'
+      },
+      email: {
+        elem: form.email,
+        errorElem: document.getElementById('emailError'),
+        validate: val => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val),
+        errorMsg: 'Please enter a valid email.'
+      },
+      phone: {
+        elem: form.phone,
+        errorElem: document.getElementById('phoneError'),
+        validate: val => /^\d{10}$/.test(val.replace(/-/g, '')),
+        errorMsg: 'Phone number must be exactly 10 digits.'
+      }
+    };
+
+    // Password strength bar
+    const pwdField = fields.password.elem;
+    const strengthFill = document.querySelector('.strength-fill');
+
+    function passwordStrength(pwd) {
+      let score = 0;
+      if(pwd.length >= 8) score++;
+      if(/[A-Z]/.test(pwd)) score++;
+      if(/[a-z]/.test(pwd)) score++;
+      if(/\d/.test(pwd)) score++;
+      if(/[\W_]/.test(pwd)) score++;
+      return score;
+    }
+    function updateStrengthBar(score) {
+      const percent = (score / 5) * 100;
+      strengthFill.style.width = percent + '%';
+
+      if(score <= 2) strengthFill.style.backgroundColor = 'var(--error-color)';
+      else if(score === 3) strengthFill.style.backgroundColor = '#ffb74d'; // orange-light
+      else if(score === 4) strengthFill.style.backgroundColor = '#ffd54f'; // yellow-light
+      else if(score === 5) strengthFill.style.backgroundColor = '#388e3c'; // green
+    }
+    pwdField.addEventListener('input', e => {
+      updateStrengthBar(passwordStrength(e.target.value));
+    });
+
+    // Toggle password visibility
+    const toggleBtn = document.querySelector('.toggle-pwd');
+    toggleBtn.addEventListener('click', () => {
+      if(pwdField.type === 'password') {
+        pwdField.type = 'text';
+        toggleBtn.textContent = 'Hide';
+      } else {
+        pwdField.type = 'password';
+        toggleBtn.textContent = 'Show';
+      }
+    });
+    toggleBtn.addEventListener('keydown', e => {
+      if(e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleBtn.click();
+      }
+    });
+
+    // Format credit card (spaces every 4 digits)
+    fields.creditCard.elem.addEventListener('input', e => {
+      let val = e.target.value.replace(/\D/g, '').slice(0,16);
+      e.target.value = val.replace(/(.{4})/g, '$1 ').trim();
+    });
+
+    // Format phone (dash: 123-456-7890)
+    fields.phone.elem.addEventListener('input', e => {
+      let val = e.target.value.replace(/\D/g, '').slice(0,10);
+      if(val.length > 6) {
+        e.target.value = val.slice(0,3) + '-' + val.slice(3,6) + '-' + val.slice(6);
+      } else if(val.length > 3) {
+        e.target.value = val.slice(0,3) + '-' + val.slice(3);
+      } else {
+        e.target.value = val;
+      }
+    });
+
+    // Validation on blur
+    Object.values(fields).forEach(({elem, errorElem, validate}) => {
+      elem.addEventListener('blur', () => {
+        const val = elem.value.trim();
+        if(!validate(val)) {
+          elem.classList.add('invalid');
+          elem.setAttribute('aria-invalid', 'true');
+          errorElem.textContent = fields[elem.name].errorMsg;
+          errorElem.classList.add('visible');
+        } else {
+          elem.classList.remove('invalid');
+          elem.setAttribute('aria-invalid', 'false');
+          errorElem.textContent = '';
+          errorElem.classList.remove('visible');
+        }
+      });
+    });
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      let allValid = true;
+
+      Object.values(fields).forEach(({elem, errorElem, validate}) => {
+        const val = elem.value.trim();
+        if(!validate(val)) {
+          elem.classList.add('invalid');
+          elem.setAttribute('aria-invalid', 'true');
+          errorElem.textContent = fields[elem.name].errorMsg;
+          errorElem.classList.add('visible');
+          allValid = false;
+        } else {
+          elem.classList.remove('invalid');
+          elem.setAttribute('aria-invalid', 'false');
+          errorElem.textContent = '';
+          errorElem.classList.remove('visible');
+        }
+      });
+
+      if(allValid) {
+        document.getElementById('successMsg').textContent = 'Registration successful! 🎉';
+        form.reset();
+        strengthFill.style.width = '0';
+        toggleBtn.textContent = 'Show';
+        pwdField.type = 'password';
+      } else {
+        document.getElementById('successMsg').textContent = '';
+      }
+    });
+  </script>
+</body>
+</html>
+
+
+
+
+                                          
+
+
+                                                    
+                                                                       
