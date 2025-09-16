@@ -1,0 +1,101 @@
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class servlet extends HttpServlet {
+
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+            String q1 = request.getParameter("q1");
+            String q2 = request.getParameter("q2");
+            String q3 = request.getParameter("q3");
+            String q4 = request.getParameter("q4");
+
+            String username = request.getParameter("username");
+
+            int score = 0;
+            if ("Ottawa".equals(q1)) {
+                score++;
+            }
+            if ("Mars".equals(q2)) {
+                score++;
+            }
+            if ("Shakespeare".equals(q3)) {
+                score++;
+            }
+            if ("Diamond".equals(q4)) {
+                score++;
+            }
+
+            response.setContentType("text/html");
+            PrintWriter out=response.getWriter();
+            out.println("<html><body>");
+            out.println("<h2>Your Exam Results</h2>");
+            out.println("<b>Name:</b> " + username  + "</br>");
+            out.println("<b>Your Score:</b> " + score + "</br>");
+            out.println("1: " + q1  + "</br>");
+            out.println("2: " + q2  + "</br>");
+            out.println("3: " + q3  + "</br>");
+            out.println("4: " + q4  + "</br>");
+            out.println("</body></html>");
+        }
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+    @Override
+    public String getServletInfo() {
+        return "This servlet processes the quiz answers and displays the result.";
+    }
+}
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Online Quiz System</title>
+        <style>
+            .exam{
+                border: solid;
+            }
+        </style>
+    </head>
+    <center>
+    <body>
+        <h2>Online Quiz</h2>
+        <h4>Duration:15 minutes</h4>
+        <h4>Total marks:4</h4>
+        <div class="exam">
+        <h3>MCQ</h3>
+        <form action="servlet" method="post">
+            Name:<input type="text" name="username" required><br><br>
+            1.What is the capital city of Canada?<br><br>
+            <input type="radio" name="q1" value="Ottawa" required>Ottawa<br>
+            <input type="radio" name="q1" value="Toronto">Toronto<br>
+            <input type="radio" name="q1" value="Paris">Paris<br><br>
+            2.Which planet is known as the Red Planet?<br><br>
+            <input type="radio" name="q2" value="Earth" required>Earth<br>
+            <input type="radio" name="q2" value="Mars">Mars<br>
+            <input type="radio" name="q2" value="Jupiter">Jupiter<br><br>
+            <h3>Answer the following one words</h3>
+            3.Who wrote Romeo and Juliet?<br><br>
+            <input type="text" name="q3" required><br><br>
+            4.What is the hardest natural substance on Earth?<br><br>
+            <input type="text" name="q4" required><br><br>
+            <input type="submit" value="Submit">
+        </form></div>
+    </center> </body>
+   
+</html>
