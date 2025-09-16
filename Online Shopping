@@ -1,0 +1,237 @@
+PROGRAM: 
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+  <meta charset="UTF-8" /> 
+  <title>Online Shop - One Page</title> 
+  <style> 
+    body { 
+      font-family: 'Segoe UI', sans-serif; 
+      margin: 0; 
+      padding: 0; 
+      background: #f9f9f9; 
+    } 
+    nav { 
+      background: linear-gradient(90deg, #ff69b4, #ff8a65, #ffd54f); 
+      padding: 15px; 
+      text-align: center; 
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+    } 
+    nav a { 
+      color: white; 
+      padding: 12px 24px; 
+      margin: 0 5px; 
+      text-decoration: none; 
+      font-weight: bold; 
+      border-radius: 20px; 
+      transition: background 0.3s ease; 
+    } 
+    nav a:hover { 
+      background: rgba(255, 255, 255, 0.2); 
+    } 
+    section { 
+      display: none; 
+      padding: 40px 20px; 
+      max-width: 1000px; 
+      margin: auto; 
+      background: white; 
+      margin-top: 30px; 
+      border-radius: 15px; 
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08); 
+    } 
+    section.active { 
+      display: block; 
+    } 
+    h1, h2, h3 { 
+      color: #2e7d32; 
+    } 
+    img { 
+      border-radius: 10px; 
+    } 
+    .product-card { 
+      border: 1px solid #ddd; 
+      border-radius: 10px; 
+      padding: 15px; 
+      margin: 15px; 
+      width: 250px; 
+      display: inline-block; 
+      text-align: center; 
+      background: #fcfcfc; 
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05); 
+      transition: transform 0.3s ease; 
+    } 
+    .product-card:hover { 
+      transform: scale(1.05); 
+    } 
+    .product-card img { 
+      width: 180px; 
+      height: 180px; 
+      object-fit: contain; 
+      margin-bottom: 10px; 
+    } 
+    .product-card button { 
+      display: inline-block; 
+      margin-top: 10px; 
+      padding: 8px 16px; 
+      background: #4CAF50; 
+      color: white; 
+      border: none; 
+      border-radius: 5px; 
+      cursor: pointer; 
+      transition: background 0.3s; 
+    } 
+    .product-card button:hover { 
+      background: #388e3c; 
+    } 
+    form input[type="number"] { 
+      width: 50px; 
+    } 
+    input[type="submit"] { 
+      padding: 10px 20px; 
+      background: #ff9800; 
+      color: white; 
+      border: none; 
+      border-radius: 5px; 
+      font-weight: bold; 
+      cursor: pointer; 
+      margin-top: 10px; 
+    } 
+iframe { 
+border: 2px solid #4CAF50; 
+border-radius: 10px; 
+} 
+footer { 
+text-align: center; 
+padding: 20px; 
+background: #f1f1f1; 
+margin-top: 50px; 
+font-size: 15px; 
+color: #333; 
+} 
+</style> 
+</head> 
+<body> 
+<nav> 
+<a href="#" onclick="switchSection('home')">Home</a> 
+<a href="#" onclick="switchSection('products')">Products</a> 
+<a href="#" onclick="switchSection('cart')">Cart</a> 
+<a href="#" onclick="switchSection('location')">Location</a> 
+<a href="#" onclick="switchSection('login')">Login</a> 
+</nav> 
+<section id="home" class="active" style="text-align: center; background: linear-gradient(to right, #fff1f1, #ffe6f0); padding: 40px 15px; position: 
+relative; overflow: hidden; border-radius: 20px; box-shadow: 0 4px 20px rgba(255, 105, 135, 0.2);"> 
+<h1 style="font-size: 2em; color: #e91e63; margin-bottom: 15px; text-shadow: 1px 1px 3px rgba(0,0,0,0.1); letter-spacing: 0.5px;">� 
+*Welcome to Online Shoppping*</h1> 
+<img 
+src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcd7_muKjTMCc9aYcyDNc9IUGCEsjBGHcU0w&s" 
+width="400" 
+alt="Welcome Banner" style="border: 4px dashed #f06292; border-radius: 12px; box-shadow: 0 3px 10px rgba(0,0,0,0.1); margin-bottom: 
+20px;" /> 
+<p style="font-size: 16px; color: #555; max-width: 600px; margin: 0 auto 20px; line-height: 1.6; background: #fff7fb; padding: 15px; border
+radius: 10px;"> 
+Shop the cutest electronics and gadgets at the lowest prices! Super simple, super smooth shopping experience for everyone � 
+</p> 
+<div style="margin-top: 25px;"> 
+<a href="#" onclick="switchSection('products')" style="background: #ff4081; color: white; padding: 10px 22px; font-size: 16px; border-radius: 
+25px; text-decoration: none; transition: background 0.3s; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">� Let's Go Shopping</a> 
+</div> 
+<div style="position: absolute; top: -40px; left: -40px; width: 150px; height: 150px; background: #ffd3e0; border-radius: 50%; opacity: 0.3; 
+animation: float 6s ease-in-out infinite;"></div> 
+<div style="position: absolute; bottom: -40px; right: -40px; width: 150px; height: 150px; background: #f8bbd0; border-radius: 50%; opacity: 
+0.3; animation: float 5s ease-in-out infinite reverse;"></div> 
+<style> 
+@keyframes float { 
+0%, 100% { transform: translateY(0); } 
+50% { transform: translateY(15px); } 
+} 
+</style> 
+</section> 
+<section id="products"> 
+<h1>�  Products</h1> 
+<div class="product-card"> 
+<h3>Laptop</h3> 
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhtJp5Zc90x75MI0gbNM5DF3JXpEbLUo_zPA&s" /> 
+<p>Price: <strong>$899</strong></p> 
+<button onclick="addToCart('Laptop', 899)">Add to Cart</button> 
+</div> 
+<div class="product-card"> 
+<h3>Smartphone</h3> 
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPXcBNRnrcZv17261AS_11Y-9Y3N383CYgEA&s" /> 
+<p>Price: <strong>$599</strong></p> 
+<button onclick="addToCart('Smartphone', 599)">Add to Cart</button> 
+</div> 
+<div class="product-card"> 
+<h3>Headphones</h3> 
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZP7PvPHt_7PWWS5Ln7lgO8p0pZQt2yTH78Q&s" /> 
+<p>Price: <strong>$199</strong></p> 
+<button onclick="addToCart('Headphones', 199)">Add to Cart</button> 
+</div> 
+<hr /> 
+<h2>Laptop Review Video</h2> 
+<video width="480" height="320" controls> 
+<source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" /> 
+Your browser does not support the video tag. 
+</video> 
+</section> 
+<section id="cart"> 
+<h1>� Your Cart</h1> 
+<div id="cart-items"></div> 
+<h3>Total: $<span id="total">0</span></h3> 
+<h4>Total Unique Products: <span id="total-products">0</span></h4> 
+<input type="submit" value="Checkout" /> 
+</section> 
+<section id="location"> 
+<h2>� Our Store Location</h2> 
+<center> 
+<iframe src="https://www.google.com/maps?q=Viruthunagar&output=embed" width="400" height="300"></iframe> 
+<p>&copy; 2025 My Online Store</p> 
+</center> 
+</section> 
+<section id="login"> 
+<h1>� Login</h1> 
+<form> 
+<label>Username: <input type="text" /></label><br /><br /> 
+<label>Password: <input type="password" /></label><br /><br /> 
+<input type="submit" value="Login" /> 
+</form> 
+</section> 
+<footer> 
+Contact us: <a href="mailto:info@onlineshop.com">info@onlineshop.com</a> | &copy; 2025 Online Shop 
+</footer> 
+<script> 
+function switchSection(id) { 
+const sections = document.querySelectorAll('section'); 
+sections.forEach(sec => sec.classList.remove('active')); 
+document.getElementById(id).classList.add('active'); 
+} 
+const cart = {}; 
+function addToCart(product, price) { 
+if (!cart[product]) { 
+cart[product] = { quantity: 1, price: price }; 
+} else { 
+cart[product].quantity++; 
+} 
+updateCartDisplay(); 
+switchSection('cart'); 
+} 
+function updateCartDisplay() { 
+const cartItems = document.getElementById('cart-items'); 
+const totalProducts = document.getElementById('total-products'); 
+cartItems.innerHTML = ''; 
+let total = 0; 
+let count = 0; 
+for (let item in cart) { 
+const itemTotal = cart[item].quantity * cart[item].price; 
+total += itemTotal; 
+count++; 
+cartItems.innerHTML += `<p><strong>${item}</strong> - $${cart[item].price} × ${cart[item].quantity} = $${itemTotal}</p>`; 
+} 
+document.getElementById('total').innerText = total; 
+totalProducts.innerText = count; 
+} 
+</script> 
+</body> 
+</html> 
+                        
+                         
+                        
